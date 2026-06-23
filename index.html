@@ -36,7 +36,6 @@
     h2 { margin:0 0 12px; color:#26333b; font-size:1.34rem; } .hint { margin:0 0 18px; color:var(--muted); }
     .intro-grid,.feature-grid { display:grid; gap:14px; } .intro-grid { grid-template-columns:1.2fr .8fr; } .feature-grid { grid-template-columns:repeat(3,1fr); margin-top:18px; }
 
-```
 .hero-panel{position:relative; overflow:hidden; padding:24px; border-radius:24px; background:
   linear-gradient(135deg, rgba(255,255,255,.92), rgba(255,255,255,.68)),
   linear-gradient(120deg, color-mix(in srgb, var(--primary) 12%, white), color-mix(in srgb, var(--primary-2) 14%, white));
@@ -76,7 +75,6 @@ input[type="text"]:focus,textarea:focus{ outline:none; border-color:color-mix(in
 @keyframes pulse {0%,100%{box-shadow:0 0 0 0 rgba(244,201,82,0)}50%{box-shadow:0 0 0 8px rgba(244,201,82,.14)}} .copy-status{ margin-left:8px; color:#355d65; font-weight:800; } .footer-note{ color:var(--muted); font-size:.95rem; margin-top:12px; } .tips-box{ margin:14px 0 0; padding:14px 16px; border:1px dashed color-mix(in srgb, var(--primary) 30%, white); color:#556871; }
 @media (max-width:840px){ .intro-grid,.feature-grid,.progress,.hero-steps{ grid-template-columns:1fr; } }
 @media (max-width:680px){ .wrap{ width:min(100%, calc(100% - 18px)); margin:16px auto 24px; } header,.card{ padding:18px; } .summary-row{ grid-template-columns:1fr; } .btn.link::after{ display:none; } }
-```
 
   </style>
 </head>
@@ -89,7 +87,6 @@ input[type="text"]:focus,textarea:focus{ outline:none; border-color:color-mix(in
       <p class="subtitle">選好標語與風格，快速產生你的青春倡議徽章提示語。</p>
     </header>
 
-```
 <div class="progress" aria-label="流程進度">
   <div class="step-pill active" id="pill1">1 功能說明</div>
   <div class="step-pill" id="pill2">2 選標語</div>
@@ -164,7 +161,7 @@ input[type="text"]:focus,textarea:focus{ outline:none; border-color:color-mix(in
     <div class="summary-row"><b>標語</b><span id="sumSlogan"></span></div>
     <div class="summary-row"><b>風格</b><span id="sumStyle"></span></div>
   </div>
-  <div class="password" id="passwordBox">通關密碼：172</div>
+  <div class="password" id="passwordBox">通關密碼：172【一起愛】</div>
   <label for="promptOutput">Gemini 圖片生成提示語</label>
   <textarea id="promptOutput" readonly></textarea>
   <div class="tips-box">小提醒：先上傳個人照或團體照，再貼上這段提示語，通常比較容易生成出接近需求的徽章效果。</div>
@@ -181,7 +178,6 @@ input[type="text"]:focus,textarea:focus{ outline:none; border-color:color-mix(in
   </div>
   <p class="footer-note">提醒：圖片生成時，請自行上傳想使用的個人照或團體照；通關密碼僅供活動使用，不會自動寫進提示語。</p>
 </section>
-```
 
   </div>
 
@@ -191,7 +187,7 @@ input[type="text"]:focus,textarea:focus{ outline:none; border-color:color-mix(in
       legacyName: '不是炫耀不需比較',
       axis: '理性看待性炫耀，拒絕同儕比較壓力',
       password: '172',
-      slogans: ['不拿親密換按讚', '獨立思考不跟風', '尊重隱私才是炫', '真愛不是競技場', '關係深度勝進度', '幸福比真不比快', '守住本心經營愛', '用愛讓性有意義', '不炫不比感受愛']
+      slogans: ['不拿親密換按讚', '獨立思考不跟風', '尊重隱私才是炫', '真愛不是競技場', '關係深度勝進度', '幸福比真不比快', '守住本心經營愛', '用愛讓性有意義', '不炫不比感受愛', '比較經驗傷親密']
     };
     const styles = {
       S1: { name: "青春校園風", desc: "明亮、清爽、有校園活動感，適合班級展示。", prompt: "明亮、清爽、有校園活動感，像班級活動貼紙或校園成果徽章。" },
@@ -223,7 +219,7 @@ input[type="text"]:focus,textarea:focus{ outline:none; border-color:color-mix(in
     function showPage(n) { for (let i = 1; i <= 5; i++) { document.getElementById(`page${i}`).classList.toggle('active', i === n); document.getElementById(`pill${i}`).classList.toggle('active', i === n); } window.scrollTo({ top: 0, behavior: 'smooth' }); }
     function goToStyle() { if (state.sloganType === 'custom') { const value = document.getElementById('customSlogan').value.trim(); if (!value) { alert('請輸入自訂標語。'); return; } state.slogan = value; } if (!state.slogan) return; renderStyles(); showPage(3); }
     function goToConfirm() { if (!state.styleKey) return; const style = styles[state.styleKey]; document.getElementById('confirmSlogan').textContent = state.slogan; document.getElementById('confirmStyle').textContent = `${style.name}：${style.desc}`; showPage(4); }
-    function goToResult() { if (!state.styleKey || !state.slogan) return; const style = styles[state.styleKey]; document.getElementById('sumSlogan').textContent = state.slogan; document.getElementById('sumStyle').textContent = `${style.name}：${style.desc}`; document.getElementById('promptOutput').value = buildPrompt(topic, state.slogan, style); document.getElementById('copyStatus').textContent = ''; document.getElementById('passwordBox').textContent = `通關密碼：${topic.password}`; showPage(5); }
+    function goToResult() { if (!state.styleKey || !state.slogan) return; const style = styles[state.styleKey]; document.getElementById('sumSlogan').textContent = state.slogan; document.getElementById('sumStyle').textContent = `${style.name}：${style.desc}`; document.getElementById('promptOutput').value = buildPrompt(topic, state.slogan, style); document.getElementById('copyStatus').textContent = ''; document.getElementById('passwordBox').textContent = `通關密碼：${topic.password}【一起愛】`; showPage(5); }
     function buildPrompt(topic, slogan, style) { return `請根據我上傳的照片，生成一張「圓形青春倡議徽章」。
 
 主題為：「${topic.displayTitle}」
@@ -255,7 +251,7 @@ input[type="text"]:focus,textarea:focus{ outline:none; border-color:color-mix(in
 
 請生成一張完成度高、可直接作為校園倡議活動成果展示的徽章圖片。`; }
     async function copyPrompt() { const text = document.getElementById('promptOutput').value; const status = document.getElementById('copyStatus'); try { await navigator.clipboard.writeText(text); status.textContent = '已複製'; } catch (err) { const textarea = document.getElementById('promptOutput'); textarea.focus(); textarea.select(); document.execCommand('copy'); status.textContent = '已複製'; } }
-    function resetAll() { state.slogan=''; state.sloganType=''; state.styleKey=''; document.getElementById('customSlogan').value=''; document.getElementById('next2').disabled=true; document.getElementById('next3').disabled=true; renderSlogans(); renderStyles(); document.getElementById('copyStatus').textContent=''; document.getElementById('promptOutput').value=''; document.getElementById('passwordBox').textContent = `通關密碼：${topic.password}`; showPage(1); }
+    function resetAll() { state.slogan=''; state.sloganType=''; state.styleKey=''; document.getElementById('customSlogan').value=''; document.getElementById('next2').disabled=true; document.getElementById('next3').disabled=true; renderSlogans(); renderStyles(); document.getElementById('copyStatus').textContent=''; document.getElementById('promptOutput').value=''; document.getElementById('passwordBox').textContent = `通關密碼：${topic.password}【一起愛】`; showPage(1); }
     document.getElementById('customSlogan').addEventListener('input', (e) => { if (state.sloganType === 'custom') { state.slogan = e.target.value.trim(); document.getElementById('next2').disabled = state.slogan.length === 0; } });
     renderSlogans(); renderStyles();
   </script>
