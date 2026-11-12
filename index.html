@@ -73,6 +73,14 @@ input[type="text"]:focus,textarea:focus{ outline:none; border-color:color-mix(in
 .btn:disabled{ opacity:.45; cursor:not-allowed; transform:none!important; } .summary{ display:grid; gap:10px; margin:14px 0 18px; padding:16px; } .summary-row{ display:grid; grid-template-columns:120px 1fr; gap:10px; } .summary-row b{ color:var(--primary-dark); }
 .password{ font-size:1.2rem; font-weight:900; color:#8a4b00; background:rgba(255,244,209,.88); border:1px solid rgba(244,201,82,.55); border-radius:14px; padding:12px 14px; margin:12px 0; animation:pulse 2s ease-in-out infinite; }
 @keyframes pulse {0%,100%{box-shadow:0 0 0 0 rgba(244,201,82,0)}50%{box-shadow:0 0 0 8px rgba(244,201,82,.14)}} .copy-status{ margin-left:8px; color:#355d65; font-weight:800; } .footer-note{ color:var(--muted); font-size:.95rem; margin-top:12px; } .tips-box{ margin:14px 0 0; padding:14px 16px; border:1px dashed color-mix(in srgb, var(--primary) 30%, white); color:#556871; }
+/* 2-2 Wordwall 互動活動：支援手機及嵌入網站的響應式容器 */
+.wordwall-panel{margin-top:20px;padding:20px;border:1px solid rgba(255,255,255,.9);border-radius:22px;background:rgba(255,255,255,.76);box-shadow:0 10px 28px rgba(0,0,0,.045);}
+.wordwall-panel h3{margin:0 0 6px;color:var(--primary-dark);font-size:1.16rem;}
+.wordwall-panel p{margin:0 0 14px;color:var(--muted);}
+.wordwall-frame{display:block;width:100%;height:440px;border:0;border-radius:14px;background:#fff;}
+.wordwall-fallback{margin-top:10px;font-size:.94rem;}
+.wordwall-fallback a{color:#335bd2;text-decoration:underline;text-underline-offset:3px;}
+@media(max-width:680px){.wordwall-panel{padding:14px}.wordwall-frame{height:490px}}
 @media (max-width:840px){ .intro-grid,.feature-grid,.progress,.hero-steps{ grid-template-columns:1fr; } }
 @media (max-width:680px){ .wrap{ width:min(100%, calc(100% - 18px)); margin:16px auto 24px; } header,.card{ padding:18px; } .summary-row{ grid-template-columns:1fr; } .btn.link::after{ display:none; } }
 
@@ -107,6 +115,15 @@ input[type="text"]:focus,textarea:focus{ outline:none; border-color:color-mix(in
       <div class="hero-step"><span>4</span><b>複製提示語</b></div>
     </div>
   </div>
+  <section class="wordwall-panel" aria-labelledby="wordwall-title">
+    <h3 id="wordwall-title">🎮 Wordwall 互動練習</h3>
+    <p>先透過互動遊戲暖身，再選擇標語與風格，製作你的青春倡議徽章。</p>
+    <iframe class="wordwall-frame"
+      src="https://wordwall.net/tc/embed/5b55da41e2a644159c09873a13073bed?themeId=60&amp;templateId=48&amp;fontStackId=0"
+      title="2-2 不炫耀｜Wordwall 互動練習"
+      loading="lazy" allowfullscreen></iframe>
+    <p class="wordwall-fallback">如果無法顯示遊戲，可<a href="https://wordwall.net/tc/embed/5b55da41e2a644159c09873a13073bed?themeId=60&amp;templateId=48&amp;fontStackId=0" target="_blank" rel="noopener noreferrer">另開 Wordwall</a>。</p>
+  </section>
   <div class="nav">
     <button class="btn secondary" onclick="resetAll()">重新開始</button>
     <button class="btn primary" onclick="showPage(2)">開始製作</button>
