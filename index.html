@@ -102,13 +102,15 @@ header h1,.subtitle{color:#2c2926}.eyebrow{background:#fffcf0;border:2px solid #
 .gate-eyebrow{font-weight:900;color:#8c3b33;letter-spacing:.03em;margin-bottom:8px}
 .gate-score{margin-top:18px;padding:18px;background:#fff5df}
 .gate-score-row{display:flex;align-items:stretch;gap:10px}
+.gate-score-actions{display:flex;align-items:stretch;gap:10px;flex-wrap:wrap}
+.gate-score-actions .btn{flex:1;white-space:nowrap}
 .gate-score-row input{width:180px;min-width:0;border:2px solid #8c7967;border-radius:11px;padding:12px 14px;font:inherit;font-size:1.1rem}
 #gameScoreStatus{font-size:.94rem;margin:10px 0 0;color:#554e43}
 #gameScoreStatus[data-status="error"]{color:#a42a28;font-weight:800}
 #gameScoreStatus[data-status="success"]{color:#196642;font-weight:800}
 .progress{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media(max-width:840px){.progress{grid-template-columns:repeat(3,minmax(0,1fr))}.hero-steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:620px){.progress{grid-template-columns:repeat(2,minmax(0,1fr))}.gate-score-row{flex-direction:column}.gate-score-row input{width:100%}.nav{align-items:stretch}.hero-steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.progress{grid-template-columns:repeat(2,minmax(0,1fr))}.gate-score-row{flex-direction:column}.gate-score-row input{width:100%}.gate-score-actions{width:100%}.gate-score-actions .btn{min-width:0}.nav{align-items:stretch}.hero-steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
 </style>
@@ -134,7 +136,7 @@ header h1,.subtitle{color:#2c2926}.eyebrow{background:#fffcf0;border:2px solid #
 <section class="card active" id="page1">
   <div class="gate-eyebrow">第一關｜青春知識挑戰</div>
   <h2>🎮 Wordwall 不炫耀互動挑戰</h2>
-  <p class="hint">完成 Wordwall 後填入遊戲顯示的得分。取得 <strong>12 分（含）以上</strong>即可進入第二關，將學習觀念轉化成倡議徽章。</p>
+  <p class="hint">完成 Wordwall 後填入遊戲顯示的得分，檢核通過即可進入下一關，將學習觀念轉化成倡議徽章。</p>
     <section class="wordwall-panel" aria-labelledby="wordwall-title">
     <h3 id="wordwall-title">🎮 Wordwall 互動練習</h3>
     <p>完成題目並記下遊戲最後顯示的分數。</p>
@@ -146,11 +148,10 @@ header h1,.subtitle{color:#2c2926}.eyebrow{background:#fffcf0;border:2px solid #
   </section>
 
   <div class="gate-score">
-    <label for="gameScore">輸入 Wordwall 得分（12 分通關）</label>
-    <div class="gate-score-row"><input id="gameScore" type="number" min="0" step="1" inputmode="numeric" placeholder="例如：12" aria-describedby="gameScoreStatus"><button class="btn primary" type="button" onclick="checkGameScore()">檢核通關</button></div>
+    <label for="gameScore">輸入 Wordwall 得分</label>
+    <div class="gate-score-row"><input id="gameScore" type="number" min="0" step="1" inputmode="numeric" placeholder="請輸入分數" aria-describedby="gameScoreStatus"><div class="gate-score-actions"><button class="btn primary" type="button" onclick="checkGameScore()">檢核通關</button><button class="btn secondary" type="button" onclick="resetAll()">重新開始</button></div></div>
     <p id="gameScoreStatus" role="status" aria-live="polite">此分數由參與者自行回報，並非自動連線驗證。</p>
   </div>
-  <div class="nav"><span></span><button class="btn secondary" type="button" onclick="resetAll()">重新開始</button></div>
 </section>
 
 <section class="card" id="page2">
@@ -262,8 +263,8 @@ header h1,.subtitle{color:#2c2926}.eyebrow{background:#fffcf0;border:2px solid #
       const field = document.getElementById('gameScore'), status=document.getElementById('gameScoreStatus');
       const raw=field.value.trim(), score=Number(raw);
       if(raw==='' || !Number.isInteger(score) || score<0){status.textContent='請輸入有效的非負整數分數。';status.dataset.status='error';return;}
-      if(score<12){gamePassed=false;status.textContent='目前 '+score+' 分，尚未達到 12 分，請重新挑戰。';status.dataset.status='error';return;}
-      gamePassed=true;status.textContent='通關成功！'+score+' 分，已達 12 分門檻。';status.dataset.status='success';showPage(2);
+      if(score<10){gamePassed=false;status.textContent='尚未通關，請重新挑戰。';status.dataset.status='error';return;}
+      gamePassed=true;status.textContent='通關成功，前往下一關！';status.dataset.status='success';showPage(2);
     }
     document.getElementById('gameScore').addEventListener('keydown',e=>{if(e.key==='Enter')checkGameScore();});
     function makeOption({ title, desc, onClick, selected }) {
