@@ -84,7 +84,34 @@ input[type="text"]:focus,textarea:focus{ outline:none; border-color:color-mix(in
 @media (max-width:840px){ .intro-grid,.feature-grid,.progress,.hero-steps{ grid-template-columns:1fr; } }
 @media (max-width:680px){ .wrap{ width:min(100%, calc(100% - 18px)); margin:16px auto 24px; } header,.card{ padding:18px; } .summary-row{ grid-template-columns:1fr; } .btn.link::after{ display:none; } }
 
-  </style>
+  
+/* 與新版月經教育相同的拼貼紙張視覺及行動裝置設計 */
+:root{--text:#282622;--muted:#655e54;--primary:#c64d42;--primary-2:#4b95b5;--primary-dark:#4f342b;--shadow:8px 10px 0 rgba(43,35,27,.13);--radius:19px}
+body{background:repeating-linear-gradient(0deg,rgba(63,50,36,.028) 0 1px,transparent 1px 6px),linear-gradient(135deg,#efe0c7,#f9f0df 48%,#deebdf)}
+header{border:3px solid #302c28;background:linear-gradient(120deg,#f2ce58 0 32%,#ee9867 32% 61%,#77bdd0 61%);box-shadow:var(--shadow);backdrop-filter:none}
+header h1,.subtitle{color:#2c2926}.eyebrow{background:#fffcf0;border:2px solid #302c28}
+.card,.hero-panel,.option,.wordwall-panel,.gate-score{border:2px solid #302c28;border-radius:17px;box-shadow:5px 6px 0 rgba(43,35,27,.12);backdrop-filter:none}
+.card{background:#fff9ec}.hero-panel{background:#fff0d5}.option{background:#fffef9}
+.option:hover,.option.selected{border-color:#bb493e;background:#fff0da}
+.step-pill{border:2px solid #302c28;box-shadow:3px 4px 0 rgba(43,35,27,.09);background:#fff9ec;border-radius:12px}
+.step-pill.active{background:#d75a4b;color:#fff;transform:none}
+.btn{min-height:44px;border:2px solid #302c28;border-radius:12px;box-shadow:3px 4px 0 rgba(43,35,27,.13)}
+.btn.primary{background:#c84d43}.btn.secondary{background:#fff5d9}.btn.link{background:#4b90b3;animation:none}
+.btn.link::after{content:none}.btn:hover{transform:translateY(-1px)}
+.hero-step,.bg-deco,.bg-deco::before,.bg-deco::after,header::after,.password,.wordwall-frame,.wordwall-panel{animation:none!important}
+.gate-eyebrow{font-weight:900;color:#8c3b33;letter-spacing:.03em;margin-bottom:8px}
+.gate-score{margin-top:18px;padding:18px;background:#fff5df}
+.gate-score-row{display:flex;align-items:stretch;gap:10px}
+.gate-score-row input{width:180px;min-width:0;border:2px solid #8c7967;border-radius:11px;padding:12px 14px;font:inherit;font-size:1.1rem}
+#gameScoreStatus{font-size:.94rem;margin:10px 0 0;color:#554e43}
+#gameScoreStatus[data-status="error"]{color:#a42a28;font-weight:800}
+#gameScoreStatus[data-status="success"]{color:#196642;font-weight:800}
+.progress{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:840px){.progress{grid-template-columns:repeat(3,minmax(0,1fr))}.hero-steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.progress{grid-template-columns:repeat(2,minmax(0,1fr))}.gate-score-row{flex-direction:column}.gate-score-row input{width:100%}.nav{align-items:stretch}.hero-steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+</style>
 </head>
 <body>
   <div class="bg-deco"></div>
@@ -95,43 +122,57 @@ input[type="text"]:focus,textarea:focus{ outline:none; border-color:color-mix(in
       <p class="subtitle">選好標語與風格，快速產生你的青春倡議徽章提示語。</p>
     </header>
 
-<div class="progress" aria-label="流程進度">
-  <div class="step-pill active" id="pill1">1 功能說明</div>
-  <div class="step-pill" id="pill2">2 選標語</div>
-  <div class="step-pill" id="pill3">3 選風格</div>
-  <div class="step-pill" id="pill4">4 確認內容</div>
-  <div class="step-pill" id="pill5">5 提示語與密碼</div>
+<div class="progress" aria-label="學習流程">
+  <div class="step-pill active" id="pill1">第一關｜Wordwall</div>
+  <div class="step-pill" id="pill2">第二關｜任務說明</div>
+  <div class="step-pill" id="pill3">任務1｜選標語</div>
+  <div class="step-pill" id="pill4">任務2｜選風格</div>
+  <div class="step-pill" id="pill5">任務3｜觀點確認</div>
+  <div class="step-pill" id="pill6">第三關｜AI 倡議</div>
 </div>
 
 <section class="card active" id="page1">
-  <div class="hero-panel">
-    <div class="hero-badge">✨ 2-2 徽章提示語小工具</div>
-    <h2 class="hero-title">2-2 青春心語Yes - 不炫耀</h2>
-    <p class="hero-text">選一個喜歡的標語，再挑一種風格，系統就會幫你整理出可直接貼到 Gemini 的提示語。</p>
-    <div class="hero-steps">
-      <div class="hero-step"><span>1</span><b>選標語</b></div>
-      <div class="hero-step"><span>2</span><b>選風格</b></div>
-      <div class="hero-step"><span>3</span><b>確認內容</b></div>
-      <div class="hero-step"><span>4</span><b>複製提示語</b></div>
-    </div>
-  </div>
-  <section class="wordwall-panel" aria-labelledby="wordwall-title">
+  <div class="gate-eyebrow">第一關｜青春知識挑戰</div>
+  <h2>🎮 Wordwall 不炫耀互動挑戰</h2>
+  <p class="hint">完成 Wordwall 後填入遊戲顯示的得分。取得 <strong>12 分（含）以上</strong>即可進入第二關，將學習觀念轉化成倡議徽章。</p>
+    <section class="wordwall-panel" aria-labelledby="wordwall-title">
     <h3 id="wordwall-title">🎮 Wordwall 互動練習</h3>
-    <p>先透過互動遊戲暖身，再選擇標語與風格，製作你的青春倡議徽章。</p>
+    <p>完成題目並記下遊戲最後顯示的分數。</p>
     <iframe class="wordwall-frame"
       src="https://wordwall.net/tc/embed/5b55da41e2a644159c09873a13073bed?themeId=60&amp;templateId=48&amp;fontStackId=0"
       title="2-2 不炫耀｜Wordwall 互動練習"
       loading="lazy" allowfullscreen></iframe>
     <p class="wordwall-fallback">如果無法顯示遊戲，可<a href="https://wordwall.net/tc/embed/5b55da41e2a644159c09873a13073bed?themeId=60&amp;templateId=48&amp;fontStackId=0" target="_blank" rel="noopener noreferrer">另開 Wordwall</a>。</p>
   </section>
-  <div class="nav">
-    <button class="btn secondary" onclick="resetAll()">重新開始</button>
-    <button class="btn primary" onclick="showPage(2)">開始製作</button>
+
+  <div class="gate-score">
+    <label for="gameScore">輸入 Wordwall 得分（12 分通關）</label>
+    <div class="gate-score-row"><input id="gameScore" type="number" min="0" step="1" inputmode="numeric" placeholder="例如：12" aria-describedby="gameScoreStatus"><button class="btn primary" type="button" onclick="checkGameScore()">檢核通關</button></div>
+    <p id="gameScoreStatus" role="status" aria-live="polite">此分數由參與者自行回報，並非自動連線驗證。</p>
   </div>
+  <div class="nav"><span></span><button class="btn secondary" type="button" onclick="resetAll()">重新開始</button></div>
 </section>
 
 <section class="card" id="page2">
-  <h2>第二步：選擇標語</h2>
+  <div class="hero-panel">
+    <div class="hero-badge">✨ 第二關｜表達立場與價值選擇</div>
+    <h2 class="hero-title">2-2 青春心語Yes - 不炫耀</h2>
+    <p class="hero-text">完成三項任務：選擇最認同的概念、最喜歡的風格，再確認最獨特的觀點，最後進入 AI 倡議。</p>
+    <div class="hero-steps">
+      <div class="hero-step"><span>1</span><b>最認同的概念</b></div>
+      <div class="hero-step"><span>2</span><b>最喜歡的風格</b></div>
+      <div class="hero-step"><span>3</span><b>最獨特的觀點</b></div>
+      <div class="hero-step"><span>4</span><b>健康倡議</b></div>
+    </div>
+  </div>
+  <div class="nav">
+    <button class="btn secondary" onclick="resetAll()">重新開始</button>
+    <button class="btn primary" onclick="showPage(3)">開始任務1</button>
+  </div>
+</section>
+
+<section class="card" id="page3">
+  <h2>【任務1】徽章標語－最認同的概念</h2>
   <p class="hint">請選擇一則推薦標語，或選擇「自訂標語」自行輸入。</p>
   <div class="options" id="sloganOptions"></div>
   <div class="custom-box" id="customBox">
@@ -140,23 +181,23 @@ input[type="text"]:focus,textarea:focus{ outline:none; border-color:color-mix(in
     <p class="footer-note">建議使用短句，避免過長造成圖片生成時文字不清楚。</p>
   </div>
   <div class="nav">
-    <button class="btn secondary" onclick="showPage(1)">上一步</button>
+    <button class="btn secondary" onclick="showPage(2)">上一步</button>
     <button class="btn primary" id="next2" onclick="goToStyle()" disabled>下一步：選風格</button>
   </div>
 </section>
 
-<section class="card" id="page3">
-  <h2>第三步：選擇徽章風格</h2>
+<section class="card" id="page4">
+  <h2>【任務2】徽章形式－最喜歡的風格</h2>
   <p class="hint">請選擇想要呈現的視覺風格。</p>
   <div class="options" id="styleOptions"></div>
   <div class="nav">
-    <button class="btn secondary" onclick="showPage(2)">上一步</button>
+    <button class="btn secondary" onclick="showPage(3)">上一步</button>
     <button class="btn primary" id="next3" onclick="goToConfirm()" disabled>下一步：確認內容</button>
   </div>
 </section>
 
-<section class="card" id="page4">
-  <h2>第四步：確認目前選到的內容</h2>
+<section class="card" id="page5">
+  <h2>【任務3】徽章內容－最獨特的觀點</h2>
   <div class="summary">
     <div class="summary-row"><b>程式版本</b><span>2-2 青春心語Yes - 不炫耀</span></div>
     <div class="summary-row"><b>原始懶人包</b><span>不是炫耀不需比較</span></div>
@@ -164,14 +205,14 @@ input[type="text"]:focus,textarea:focus{ outline:none; border-color:color-mix(in
     <div class="summary-row"><b>風格</b><span id="confirmStyle"></span></div>
   </div>
   <div class="nav">
-    <button class="btn secondary" onclick="showPage(3)">上一步</button>
-    <button class="btn primary" onclick="goToResult()">確認無誤，產生提示語</button>
+    <button class="btn secondary" onclick="showPage(4)">上一步</button>
+    <button class="btn primary" onclick="goToResult()">下一關：健康倡議</button>
   </div>
 </section>
 
-<section class="card" id="page5">
-  <h2>第五步：複製 Gemini 圖片生成提示語</h2>
-  <p class="hint">請先複製提示語，再開啟 Gemini，自行上傳照片並貼上提示語生成圖片。</p>
+<section class="card" id="page6">
+  <h2>第三關：青春倡議－AI 徽章生成</h2>
+  <p class="hint">請先複製提示語，再開啟 ChatGPT 或 Gemini；一併上傳人物照片，貼上提示語生成圖片。</p>
   <div class="summary">
     <div class="summary-row"><b>程式版本</b><span>2-2 青春心語Yes - 不炫耀</span></div>
     <div class="summary-row"><b>原始懶人包</b><span>不是炫耀不需比較</span></div>
@@ -179,11 +220,11 @@ input[type="text"]:focus,textarea:focus{ outline:none; border-color:color-mix(in
     <div class="summary-row"><b>風格</b><span id="sumStyle"></span></div>
   </div>
   <div class="password" id="passwordBox">通關密碼：172【一起愛】</div>
-  <label for="promptOutput">Gemini 圖片生成提示語</label>
+  <label for="promptOutput">AI 圖片生成提示語</label>
   <textarea id="promptOutput" readonly></textarea>
   <div class="tips-box">小提醒：先上傳個人照或團體照，再貼上這段提示語，通常比較容易生成出接近需求的徽章效果。</div>
   <div class="nav">
-    <button class="btn secondary" onclick="showPage(4)">上一步</button>
+    <button class="btn secondary" onclick="showPage(5)">上一步</button>
     <div>
       <button class="btn primary" onclick="copyPrompt()">一鍵複製提示語</button>
       <span class="copy-status" id="copyStatus"></span>
@@ -192,6 +233,7 @@ input[type="text"]:focus,textarea:focus{ outline:none; border-color:color-mix(in
   <div class="nav">
     <button class="btn secondary" onclick="resetAll()">重新開始</button>
     <a class="btn link" href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">開啟 Gemini</a>
+      <a class="btn link gpt-link" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">開啟 ChatGPT</a>
   </div>
   <p class="footer-note">提醒：圖片生成時，請自行上傳想使用的個人照或團體照；通關密碼僅供活動使用，不會自動寫進提示語。</p>
 </section>
@@ -215,6 +257,15 @@ input[type="text"]:focus,textarea:focus{ outline:none; border-color:color-mix(in
       S6: { name: "夢幻柔光風", desc: "溫柔、明亮、有希望感，適合正向宣言。", prompt: "溫柔、明亮、有柔光與希望感，像青春宣言海報或溫暖的夢幻貼紙。" }
     };
     const state = { slogan: "", sloganType: "", styleKey: "" };
+    let gamePassed = false;
+    function checkGameScore() {
+      const field = document.getElementById('gameScore'), status=document.getElementById('gameScoreStatus');
+      const raw=field.value.trim(), score=Number(raw);
+      if(raw==='' || !Number.isInteger(score) || score<0){status.textContent='請輸入有效的非負整數分數。';status.dataset.status='error';return;}
+      if(score<12){gamePassed=false;status.textContent='目前 '+score+' 分，尚未達到 12 分，請重新挑戰。';status.dataset.status='error';return;}
+      gamePassed=true;status.textContent='通關成功！'+score+' 分，已達 12 分門檻。';status.dataset.status='success';showPage(2);
+    }
+    document.getElementById('gameScore').addEventListener('keydown',e=>{if(e.key==='Enter')checkGameScore();});
     function makeOption({ title, desc, onClick, selected }) {
       const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'option' + (selected ? ' selected' : '');
       btn.innerHTML = `<strong>${title}</strong>${desc ? `<span>${desc}</span>` : ''}`; btn.addEventListener('click', onClick); return btn;
@@ -233,42 +284,38 @@ input[type="text"]:focus,textarea:focus{ outline:none; border-color:color-mix(in
         box.appendChild(makeOption({ title: `${key}｜${style.name}`, desc: style.desc, selected: state.styleKey === key, onClick: () => { state.styleKey = key; document.getElementById('next3').disabled = false; renderStyles(); } }));
       });
     }
-    function showPage(n) { for (let i = 1; i <= 5; i++) { document.getElementById(`page${i}`).classList.toggle('active', i === n); document.getElementById(`pill${i}`).classList.toggle('active', i === n); } window.scrollTo({ top: 0, behavior: 'smooth' }); }
-    function goToStyle() { if (state.sloganType === 'custom') { const value = document.getElementById('customSlogan').value.trim(); if (!value) { alert('請輸入自訂標語。'); return; } state.slogan = value; } if (!state.slogan) return; renderStyles(); showPage(3); }
-    function goToConfirm() { if (!state.styleKey) return; const style = styles[state.styleKey]; document.getElementById('confirmSlogan').textContent = state.slogan; document.getElementById('confirmStyle').textContent = `${style.name}：${style.desc}`; showPage(4); }
-    function goToResult() { if (!state.styleKey || !state.slogan) return; const style = styles[state.styleKey]; document.getElementById('sumSlogan').textContent = state.slogan; document.getElementById('sumStyle').textContent = `${style.name}：${style.desc}`; document.getElementById('promptOutput').value = buildPrompt(topic, state.slogan, style); document.getElementById('copyStatus').textContent = ''; document.getElementById('passwordBox').textContent = `通關密碼：${topic.password}【一起愛】`; showPage(5); }
-    function buildPrompt(topic, slogan, style) { return `請根據我上傳的照片，生成一張「圓形青春倡議徽章」。
-
-主題為：「${topic.displayTitle}」
-此版本對應原主題為：「${topic.legacyName}」
-主題概念為：${topic.axis}。
-
-請以我上傳照片中的人物或團體作為徽章主角，人物置中，整體做成圓形徽章、校園活動徽章或青春貼紙徽章的感覺。
-
-徽章上必須清楚呈現以下倡議標語：
-「${slogan}」
-
-整體視覺風格請採用：
-「${style.name}」
-風格特徵為：${style.prompt}
-
-圖片要求如下：
-1. 使用我上傳照片中的人物或團體作為主角。
-2. 人物位於徽章中央，表情自然、正向、青春。
-3. 採用圓形徽章構圖，像校園活動徽章、倡議貼紙或任務徽章。
-4. 徽章上清楚放入文字：「${slogan}」。
-5. 文字要清楚、完整、容易閱讀，不要改字，不要漏字。
-6. 可以加入手寫筆記元素、貼紙元素、星星、小愛心、紙膠帶感、光芒、圓形邊框、校園小圖示等裝飾。
-7. 整體畫面要正向、明亮、溫暖、青春，適合國中與高中校園展示。
-8. 背景與裝飾不要太複雜，避免影響主角與標語辨識。
-9. 不要成人化、性感化、暴露化。
-10. 不要恐嚇、獵奇、負面化或羞辱感。
-11. 不要加入通關密碼。
-12. 不要改寫標語，不要把其他文字誤當成標語。
-
-請生成一張完成度高、可直接作為校園倡議活動成果展示的徽章圖片。`; }
+    function showPage(n) { if(n > 1 && !gamePassed) n = 1; for (let i = 1; i <= 6; i++) { document.getElementById(`page${i}`).classList.toggle('active', i === n); document.getElementById(`pill${i}`).classList.toggle('active', i === n); } window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    function goToStyle() { if (state.sloganType === 'custom') { const value = document.getElementById('customSlogan').value.trim(); if (!value) { alert('請輸入自訂標語。'); return; } state.slogan = value; } if (!state.slogan) return; renderStyles(); showPage(4); }
+    function goToConfirm() { if (!state.styleKey) return; const style = styles[state.styleKey]; document.getElementById('confirmSlogan').textContent = state.slogan; document.getElementById('confirmStyle').textContent = `${style.name}：${style.desc}`; showPage(5); }
+    function goToResult() { if (!state.styleKey || !state.slogan) return; const style = styles[state.styleKey]; document.getElementById('sumSlogan').textContent = state.slogan; document.getElementById('sumStyle').textContent = `${style.name}：${style.desc}`; document.getElementById('promptOutput').value = buildPrompt(topic, state.slogan, style); document.getElementById('copyStatus').textContent = ''; document.getElementById('passwordBox').textContent = `通關密碼：${topic.password}【一起愛】`; showPage(6); }
+    function buildPrompt(topic, slogan, style) {
+      return [
+        '請根據我上傳的人物照片，生成一張完整的「圓形青春倡議徽章」。',
+        '',
+        '【不可省略的硬性要求】',
+        '1. 一定要清楚出現上傳照片中的人像，並讓照片中的人物成為整張圖的主體與視覺焦點。',
+        '2. 不可以忽略、替換或弱化照片中的人物；單人照以該人物為主角，多人照須保留主要人物特徵，並讓人物群像成為主體。',
+        '3. 成品必須是「圓形徽章」構圖，不可改成方形海報、一般插畫或其他版型。',
+        '4. 圓形徽章上端必須清楚出現主題：「' + topic.displayTitle + '」。',
+        '5. 圓形徽章下端必須清楚出現完整標語：「' + slogan + '」。',
+        '6. 主題與標語不可改字、漏字；不要加入通關密碼或其他無關文字。',
+        '',
+        '【教育倡議內容】',
+        '原主題：' + topic.legacyName,
+        '核心概念：' + topic.axis,
+        '我的倡議標語：' + slogan,
+        '視覺風格：' + style.name + '；' + style.prompt,
+        '',
+        '【視覺與教育安全】',
+        '1. 人像、標題、標語、裝飾須有明確層次，人物不得被文字或裝飾遮擋。',
+        '2. 圖像適度結合理性看待性炫耀、尊重隱私、拒絕同儕比較的元素，不要堆砌無關物件。',
+        '3. 畫面正向、友善，適合國中高中校園；不得成人化、性感化、暴露化、恐嚇、歧視或羞辱。',
+        '',
+        '請生成可直接用於校園倡議展示的完整圓形徽章。'
+      ].join('\n');
+    }
     async function copyPrompt() { const text = document.getElementById('promptOutput').value; const status = document.getElementById('copyStatus'); try { await navigator.clipboard.writeText(text); status.textContent = '已複製'; } catch (err) { const textarea = document.getElementById('promptOutput'); textarea.focus(); textarea.select(); document.execCommand('copy'); status.textContent = '已複製'; } }
-    function resetAll() { state.slogan=''; state.sloganType=''; state.styleKey=''; document.getElementById('customSlogan').value=''; document.getElementById('next2').disabled=true; document.getElementById('next3').disabled=true; renderSlogans(); renderStyles(); document.getElementById('copyStatus').textContent=''; document.getElementById('promptOutput').value=''; document.getElementById('passwordBox').textContent = `通關密碼：${topic.password}【一起愛】`; showPage(1); }
+    function resetAll() { window.location.reload(); }
     document.getElementById('customSlogan').addEventListener('input', (e) => { if (state.sloganType === 'custom') { state.slogan = e.target.value.trim(); document.getElementById('next2').disabled = state.slogan.length === 0; } });
     renderSlogans(); renderStyles();
   </script>
