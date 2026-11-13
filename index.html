@@ -77,10 +77,10 @@ input[type="text"]:focus,textarea:focus{ outline:none; border-color:color-mix(in
 .wordwall-panel{margin-top:20px;padding:20px;border:1px solid rgba(255,255,255,.9);border-radius:22px;background:rgba(255,255,255,.76);box-shadow:0 10px 28px rgba(0,0,0,.045);}
 .wordwall-panel h3{margin:0 0 6px;color:var(--primary-dark);font-size:1.16rem;}
 .wordwall-panel p{margin:0 0 14px;color:var(--muted);}
-.wordwall-frame{display:block;width:100%;height:440px;border:0;border-radius:14px;background:#fff;}
+.wordwall-frame{display:block;border:0;border-radius:14px;background:#fff;}
 .wordwall-fallback{margin-top:10px;font-size:.94rem;}
 .wordwall-fallback a{color:#335bd2;text-decoration:underline;text-underline-offset:3px;}
-@media(max-width:680px){.wordwall-panel{padding:14px}.wordwall-frame{height:490px}}
+@media(max-width:680px){.wordwall-panel{padding:14px}}
 @media (max-width:840px){ .intro-grid,.feature-grid,.progress,.hero-steps{ grid-template-columns:1fr; } }
 @media (max-width:680px){ .wrap{ width:min(100%, calc(100% - 18px)); margin:16px auto 24px; } header,.card{ padding:18px; } .summary-row{ grid-template-columns:1fr; } .btn.link::after{ display:none; } }
 
@@ -140,11 +140,12 @@ header h1,.subtitle{color:#2c2926}.eyebrow{background:#fffcf0;border:2px solid #
     <section class="wordwall-panel" aria-labelledby="wordwall-title">
     <h3 id="wordwall-title">🎮 Wordwall 互動練習</h3>
     <p>完成題目並記下遊戲最後顯示的分數。</p>
-    <iframe class="wordwall-frame"
-      src="https://wordwall.net/tc/embed/5b55da41e2a644159c09873a13073bed?themeId=60&amp;templateId=48&amp;fontStackId=0"
+    <iframe class="wordwall-frame" style="max-width:100%"
+      src="https://wordwall.net/tc/embed/103380c12a1f404cacceb965f8831052?themeId=46&amp;templateId=48&amp;fontStackId=0"
+      width="500" height="380" frameborder="0"
       title="2-2 不炫耀｜Wordwall 互動練習"
       loading="lazy" allowfullscreen></iframe>
-    <p class="wordwall-fallback">如果無法顯示遊戲，可<a href="https://wordwall.net/tc/embed/5b55da41e2a644159c09873a13073bed?themeId=60&amp;templateId=48&amp;fontStackId=0" target="_blank" rel="noopener noreferrer">另開 Wordwall</a>。</p>
+    <p class="wordwall-fallback">如果無法顯示遊戲，可<a href="https://wordwall.net/tc/embed/103380c12a1f404cacceb965f8831052?themeId=46&amp;templateId=48&amp;fontStackId=0" target="_blank" rel="noopener noreferrer">另開 Wordwall</a>。</p>
   </section>
 
   <div class="gate-score">
